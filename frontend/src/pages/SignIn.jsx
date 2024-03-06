@@ -63,12 +63,12 @@ const SignIn = () => {
     //     )}
     //   </label>
     //   <span className="flex items-center justify-between">
-    // <span className="text-sm">
-    //   Not Registered?{" "}
-    //   <Link className="underline" to="/register">
-    //     Create an account here
-    //   </Link>
-    // </span>
+    //     <span className="text-sm">
+    //       Not Registered?{" "}
+    //       <Link className="underline" to="/register">
+    //         Create an account here
+    //       </Link>
+    //     </span>
     //     <button
     //       type="submit"
     //       className="flex items-center font-bold  bg-[#ff5622dd] text-white  h-[40px] w-auto rounded-md px-3 ml-6"
@@ -133,7 +133,19 @@ const SignIn = () => {
                   id="password"
                   required=""
                   type="password"
+                  {...register("password", {
+                    required: "This field is required",
+                    minLength: {
+                      value: 6,
+                      message: "Password must be at least 6 characters",
+                    },
+                  })}
                 />
+                {errors.password && (
+                  <span className="text-red-500">
+                    {errors.password.message}
+                  </span>
+                )}
               </div>
               <div className="space-y-2">
                 <button
