@@ -34,7 +34,7 @@ async (req, res)=>{
   const token = jwt.sign(
     {userId: newUser.id},
     process.env.JWT_SECRET_KEY,
-    { expiresIn: '1d'}
+    { expiresIn: "1d",}
     );
 
     res.cookie('auth_token', token, {
